@@ -1,0 +1,46 @@
+## calculating the integarl by refrencing the centre of the ball as the origin by shifting the polytope to the centre of the inner ball
+##shifting of origin occurs by O'=O-x0
+library("volesti")
+new <- function(x, x0) {
+    exp(-a * sum((x - x0)^2))
+}
+## type of distribution can be both uniform and gaussian
+integral <- function(type) {
+    N = number of points for sampling
+    points = sample_points(P, N, distribution = type)
+    sum = 0
+    for (n in (1 : N)) {
+        sum = sum + function(points[,n], x0)
+    }
+    sum * vol / N
+}
+P = GenRandHpoly(100, 100)
+x0 = InnerBall(P)[1:100]
+vol = volume(P)
+a= value of a 
+    mean = 0
+    vector = c(1:20)
+    for (t in (1 :20)) {
+        values[t] = integral('type')
+        mean = mean + vector[t]
+    }
+    mean = mean / 20
+    sum = 0
+    for (t in (1 : 20)) {
+        sum = sum + (vector[t] - mean)^2
+    }
+    standard_deviation= sqrt(sum/19)
+  print(a)
+  print(mean)
+  print(standard_deviation)
+
+## standard deviation is inversely propotional to sqrt(N)
+## when a is attaning the smaller value the standard deviation is incresing
+output for diffrent values of a for both the cases is given below
+Uniform sampling
+a=1 N=10000 points
+integral = 5.982679  standard deviation = 0.7946846 
+
+Gaussian sampling 
+a=1 N=10000
+ integral = 6.65442  standard deviation = 1.170977
